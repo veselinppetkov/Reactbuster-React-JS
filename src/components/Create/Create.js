@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { createMovie } from "../../services/movieServices";
+import { useAuthContext } from "../../contexts/AuthContext";
 
-const Create = ({ token }) => {
+const Create = () => {
+  const { user } = useAuthContext();
   const navigate = useNavigate();
 
   const createHandler = (e) => {
     e.preventDefault();
-    const { Title, Genre, Poster, Year, Runtime, Country, imdbRating, Plot } =
+    let { Title, Genre, Poster, Year, Runtime, Country, imdbRating, Plot } =
       Object.fromEntries(new FormData(e.currentTarget));
+    Runtime += `min.`;
 
     const movieData = {
       Title,
@@ -21,7 +24,7 @@ const Create = ({ token }) => {
       Plot,
     };
 
-    createMovie(movieData, token);
+    createMovie(movieData, user.accessToken);
     console.log(`You have successfuly added a movie! Wohoo!`);
     navigate(`/catalog`);
   };

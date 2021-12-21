@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import useLocalStorage from "./hooks/useLocalStorage";
+import { AuthProvider } from "./contexts/AuthContext";
+import { Routes, Route } from "react-router-dom";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -8,58 +8,32 @@ import Catalog from "./components/Catalog";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Details from "./components/Details";
-import Error from "./components/Error";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Create from "./components/Create";
 import Edit from "./components/Edit";
 import OwnerCatalog from "./components/OwnerCatalog";
 
-const initialData = {
-  accessToken: "",
-  email: "",
-  _id: "",
-};
-
 function App() {
-  const [userInfo, setUserInfo] = useLocalStorage("userData", initialData);
-
-  const login = (authData) => {
-    setUserInfo(authData);
-  };
-
   return (
-    <Router>
+    <AuthProvider>
       <div id="box">
-        <Header email={userInfo.email} />
+        <Header />
         <main id="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog />} />
-            <Route
-              path="/my-movies"
-              element={<OwnerCatalog userId={userInfo._id} />}
-            />
-            <Route
-              path="/add-movie"
-              element={<Create token={userInfo.accessToken} />}
-            />
-            <Route path="/login" element={<Login login={login} />} />
+            <Route path="/my-movies" element={<OwnerCatalog />} />
+            <Route path="/add-movie" element={<Create />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route
-              path="/details/:movieId"
-              element={
-                <Details userId={userInfo._id} token={userInfo.accessToken} />
-              }
-            />
-            <Route
-              path="/edit/:movieId"
-              element={<Edit token={userInfo.accessToken} />}
-            />
-            <Route path="*" element={<Error />} />
+            <Route path="/details/:movieId" element={<Details />} />
+            <Route path="/edit/:movieId" element={<Edit />} />
+            <Route path="*" element={<ErrorBoundary />} />
           </Routes>
         </main>
         <Footer />
       </div>
-    </Router>
+    </AuthProvider>
   );
 }
 

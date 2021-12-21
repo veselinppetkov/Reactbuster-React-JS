@@ -2,14 +2,15 @@ import OwnerCatalogItem from "./OwnerCatalogItem";
 import OwnerCatalogLoadMore from "./OwnerCatalogLoadMore";
 import OwnerCatalogNav from "./OwnerCatalogNav";
 import { getUserMovies } from "../../services/movieServices";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { useState, useEffect } from "react";
 
-const OwnerCatalogMain = ({ userId }) => {
+const OwnerCatalogMain = () => {
+  const { user } = useAuthContext();
   const [movies, setMovies] = useState([]);
-  console.log(userId);
 
   useEffect(() => {
-    getUserMovies(userId).then((data) => setMovies(data));
+    getUserMovies(user._id).then((data) => setMovies(data));
   }, []);
 
   return (

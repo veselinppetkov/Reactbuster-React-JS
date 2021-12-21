@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const Error = () => {
+const ErrorBoundary = () => {
   return (
     <div
       className="page-404 section--full-bg"
@@ -30,4 +30,4 @@ const Error = () => {
     </div>
   );
 };
-export default Error;
+export default ErrorBoundary;

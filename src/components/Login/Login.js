@@ -1,8 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { loginRequest } from "../../services/authServices";
+import { useAuthContext } from "../../contexts/AuthContext";
 
-const Login = ({ login }) => {
+const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuthContext();
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -12,9 +14,8 @@ const Login = ({ login }) => {
       .then((authData) => {
         login(authData);
         navigate(`/catalog`);
-        console.log(`You have successfuly signed in!`);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => alert(err.message));
   };
 
   const rememberMeHandler = (e) => {

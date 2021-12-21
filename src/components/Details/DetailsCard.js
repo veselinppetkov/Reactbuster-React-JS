@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { deleteMovieById } from "../../services/movieServices";
+import { useAuthContext } from "../../contexts/AuthContext";
 
-const DetailsCard = ({ movie, userId, token }) => {
+const DetailsCard = ({ movie }) => {
+  const { user } = useAuthContext();
   const navigate = useNavigate();
   return (
     <>
@@ -39,7 +41,7 @@ const DetailsCard = ({ movie, userId, token }) => {
         <div className="article__content">
           <h1>
             {movie.Title}{" "}
-            {userId === movie._ownerId ? (
+            {user._id === movie._ownerId ? (
               <>
                 <Link to={`/edit/${movie._id}`}>
                   <button type="button" className="edit__btn">
@@ -48,7 +50,7 @@ const DetailsCard = ({ movie, userId, token }) => {
                 </Link>
                 <button
                   onClick={() => {
-                    deleteMovieById(movie._id, token);
+                    deleteMovieById(movie._id, user.accessToken);
                     navigate(`/catalog`);
                   }}
                   type="button"
@@ -70,10 +72,10 @@ const DetailsCard = ({ movie, userId, token }) => {
             <li>{movie.Year}</li>
             <li>{movie.Runtime}</li>
           </ul>
-
           <p> {movie.Plot}</p>
         </div>
       </div>
+
       <div className="col-12 col-xl-8">
         <div className="categories">
           <h3 className="categories__title">Genres</h3>

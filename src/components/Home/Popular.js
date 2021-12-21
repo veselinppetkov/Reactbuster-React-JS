@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import PopularCard from "./PopularCard";
+// import PopularCard from "./PopularCard";
 // import { getAllMovies } from "../../services/movieServices";
 // import { useState, useEffect } from "react";
 
-const Popular = ({ movies }) => {
+const Popular = () => {
   // const [movies, setMovies] = useState([]);
 
   // useEffect(() => {

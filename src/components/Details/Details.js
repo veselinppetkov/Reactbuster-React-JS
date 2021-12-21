@@ -3,13 +3,12 @@ import { useState, useEffect } from "react";
 import { getMovieById } from "../../services/movieServices";
 import DetailsCard from "./DetailsCard";
 
-const Details = ({ userId, token }) => {
-  const { movieId } = useParams();
+const Details = () => {
   const [movie, setMovie] = useState({});
+  const { movieId } = useParams();
 
   useEffect(() => {
     getMovieById(movieId).then((data) => {
-      console.log(data);
       setMovie(data);
     });
   }, [movieId]);
@@ -30,7 +29,7 @@ const Details = ({ userId, token }) => {
       <div className="container">
         <div className="article">
           <div className="row">
-            <DetailsCard movie={movie} userId={userId} token={token} />
+            <DetailsCard movie={movie} />
             {/* <div className="col-12 col-xl-8">
               <video
                 controls

@@ -1,11 +1,11 @@
 import OwnerCatalogHead from "./OwnerCatalogHead";
 import OwnerCatalogMain from "./OwnerCatalogMain";
 
-const OwnerCatalog = ({ userId }) => {
+const OwnerCatalog = () => {
   return (
     <>
       <OwnerCatalogHead />
-      <OwnerCatalogMain userId={userId} />
+      <OwnerCatalogMain />
     </>
   );
 };

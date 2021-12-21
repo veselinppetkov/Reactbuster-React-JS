@@ -1,18 +1,40 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
+
+const initialAuthState = {
+  _id: "",
+  email: "",
+  accessToken: "",
+};
 
 export const AuthContext = createContext();
 
-const initialState = {
-  accessToken: "",
-  email: "",
-  _id: "",
-};
-
 export const AuthProvider = ({ children }) => {
-  cont[(user, setUser)] = useLocalStorage(initialState);
+  const navigate = useNavigate();
+  const [user, setUser] = useLocalStorage("user", initialAuthState);
+
+  const login = (authData) => {
+    setUser(authData);
+    navigate(`/`);
+  };
+
+  const logout = () => {
+    setUser(initialAuthState);
+    navigate(`/`);
+  };
 
   return (
-    <AuthContext.Provider values={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider
+      value={{ user, login, logout, isAuthenticated: user.email }}
+    >
+      {children}
+    </AuthContext.Provider>
   );
+};
+
+export const useAuthContext = () => {
+  const authState = useContext(AuthContext);
+
+  return authState;
 };

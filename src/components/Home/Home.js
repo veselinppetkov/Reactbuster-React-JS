@@ -31,7 +31,7 @@ const Home = () => {
         ></button>
       </div> */}
       <Category />
-      <Popular movies={movies} />
+      <Popular />
     </>
   );
 };

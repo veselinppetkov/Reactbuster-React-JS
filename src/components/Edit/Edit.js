@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { getMovieById, editMovie } from "../../services/movieServices";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useAuthContext } from "../../contexts/AuthContext";
 
-const Edit = ({ token }) => {
+const Edit = () => {
+  const { user } = useAuthContext();
   const navigate = useNavigate();
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
@@ -17,9 +19,8 @@ const Edit = ({ token }) => {
 
   const editHandler = (e) => {
     e.preventDefault();
-    let { Title, Genre, Poster, Year, Runtime, Country, imdbRating, Plot } =
+    const { Title, Genre, Poster, Year, Runtime, Country, imdbRating, Plot } =
       Object.fromEntries(new FormData(e.currentTarget));
-    Runtime += `min.`;
 
     const movieData = {
       Title,
@@ -32,7 +33,7 @@ const Edit = ({ token }) => {
       Plot,
     };
 
-    editMovie(movieId, movieData, token);
+    editMovie(movieId, movieData, user.accessToken);
     navigate(`/catalog`);
   };
 

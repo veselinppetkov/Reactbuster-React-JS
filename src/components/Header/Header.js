@@ -1,13 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "../../contexts/AuthContext";
 
-const Header = ({ email }) => {
-  const navigate = useNavigate();
-
-  const logout = (e) => {
-    e.preventDefault();
-    localStorage.clear();
-    navigate(`/login`);
-  };
+const Header = () => {
+  const { logout, isAuthenticated } = useAuthContext();
 
   return (
     <header className="header header--static">
@@ -154,7 +149,27 @@ const Header = ({ email }) => {
                   </svg>
                 </button> */}
 
-                {localStorage.length === 0 ? (
+                {isAuthenticated ? (
+                  <>
+                    <Link className="header__user" to="#" id="welcome-user">
+                      <span>Welcome, {isAuthenticated}</span>
+                    </Link>
+                    <Link
+                      className="header__user"
+                      to="#"
+                      id="logout"
+                      onClick={logout}
+                    >
+                      <span>Logout</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z" />
+                      </svg>
+                    </Link>
+                  </>
+                ) : (
                   <>
                     <form action="#" className="header__form">
                       <input
@@ -189,26 +204,6 @@ const Header = ({ email }) => {
 
                     <Link to="/login" className="header__user" id="sign-in">
                       <span>Sign In</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z" />
-                      </svg>
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link className="header__user" to="#" id="welcome-user">
-                      <span>Welcome, {email}</span>
-                    </Link>
-                    <Link
-                      className="header__user"
-                      to="#"
-                      id="logout"
-                      onClick={logout}
-                    >
-                      <span>Logout</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
