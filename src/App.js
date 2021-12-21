@@ -10,8 +10,8 @@ import Register from "./components/Register";
 import Details from "./components/Details";
 import Error from "./components/Error";
 import Create from "./components/Create";
-import Edit from "./components/Edit/Edit";
-import OwnerCatalog from "./components/OwnerCatalog/OwnerCatalog";
+import Edit from "./components/Edit";
+import OwnerCatalog from "./components/OwnerCatalog";
 
 const initialData = {
   accessToken: "",
