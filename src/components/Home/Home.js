@@ -2,7 +2,7 @@ import HomeCard from "./HomeCard";
 import { getAllMovies } from "../../services/movieServices";
 import { useState, useEffect } from "react";
 import Popular from "./Popular";
-import Cata from "../Cata";
+import Category from "../Category";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -30,7 +30,7 @@ const Home = () => {
           type="button"
         ></button>
       </div> */}
-      <Cata />
+      <Category />
       <Popular movies={movies} />
     </>
   );

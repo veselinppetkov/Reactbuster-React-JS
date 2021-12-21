@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const Cata = () => {
+const Category = () => {
   return (
     <section className="section section--pb0">
       <div className="container">
@@ -88,4 +88,4 @@ const Cata = () => {
     </section>
   );
 };
-export default Cata;
+export default Category;
