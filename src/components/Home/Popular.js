@@ -12,6 +12,7 @@ const Popular = () => {
   useEffect(() => {
     getAllMovies().then((data) => setMovies(data));
   }, []);
+
   return (
     <section className="section section--pb0">
       <div className="container">
@@ -25,11 +26,11 @@ const Popular = () => {
             <div className="section__carousel-wrap">
               <OwlCarousel
                 className="section__carousel owl-carousel"
-                items={5}
+                items={6}
                 className="owl-theme"
                 loop
-                nav
-                autoplay={true}
+                autoplay
+                autoplayHoverPause
                 margin={10}
               >
                 {movies.map((m) => (

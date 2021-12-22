@@ -9,7 +9,7 @@ const DetailsCard = ({ movie }) => {
   return (
     <>
       <div className="col-12 col-xl-8">
-        <a
+        {/* <a
           href="https://www.youtube.com/watch?v=l6bqq_IaNn8&t=1s"
           className="article__trailer open-video"
         >
@@ -36,7 +36,7 @@ const DetailsCard = ({ movie }) => {
             ></path>
           </svg>
           Trailer
-        </a>
+        </a> */}
 
         <div className="article__content">
           <h1>
@@ -78,10 +78,27 @@ const DetailsCard = ({ movie }) => {
 
       <div className="col-12 col-xl-8">
         <div className="categories">
+          <h3 className="categories__title">Trailer</h3>
+        </div>
+        <br />
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube-nocookie.com/embed/l6bqq_IaNn8"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <div className="categories">
           <h3 className="categories__title">Genres</h3>
-          <Link to="/" className="categories__item">
-            {movie.Genre}
-          </Link>
+          {movie.Genre !== undefined
+            ? movie.Genre.split(",").map((g) => (
+                <Link to="/" key={Math.random()} className="categories__item">
+                  {g}
+                </Link>
+              ))
+            : null}
         </div>
       </div>
     </>

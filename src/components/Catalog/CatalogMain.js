@@ -11,6 +11,10 @@ const CatalogMain = () => {
     getAllMovies().then((data) => setMovies(data));
   }, []);
 
+  if (!movies) {
+    return;
+  }
+
   return (
     <div className="catalog catalog--page">
       <div className="container">

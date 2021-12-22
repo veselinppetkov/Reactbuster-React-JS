@@ -8,30 +8,35 @@ import Catalog from "./components/Catalog";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Details from "./components/Details";
-import ErrorBoundary from "./components/ErrorBoundary";
+import Error from "./components/Error";
 import Create from "./components/Create";
 import Edit from "./components/Edit";
 import OwnerCatalog from "./components/OwnerCatalog";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import MyProfile from "./components/MyProfile";
 
 function App() {
   return (
-    <AuthProvider>
-      <Header />
-      <main id="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/my-movies" element={<OwnerCatalog />} />
-          <Route path="/add-movie" element={<Create />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/details/:movieId" element={<Details />} />
-          <Route path="/edit/:movieId" element={<Edit />} />
-          <Route path="*" element={<ErrorBoundary />} />
-        </Routes>
-      </main>
-      <Footer />
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <Header />
+        <main id="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/my-movies" element={<OwnerCatalog />} />
+            <Route path="/add-movie" element={<Create />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/my-profile" element={<MyProfile />} />
+            <Route path="/details/:movieId" element={<Details />} />
+            <Route path="/edit/:movieId" element={<Edit />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </main>
+        <Footer />
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
 
