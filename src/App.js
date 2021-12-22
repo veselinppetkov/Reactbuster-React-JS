@@ -16,23 +16,21 @@ import OwnerCatalog from "./components/OwnerCatalog";
 function App() {
   return (
     <AuthProvider>
-      <div id="box">
-        <Header />
-        <main id="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/catalog" element={<Catalog />} />
-            <Route path="/my-movies" element={<OwnerCatalog />} />
-            <Route path="/add-movie" element={<Create />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/details/:movieId" element={<Details />} />
-            <Route path="/edit/:movieId" element={<Edit />} />
-            <Route path="*" element={<ErrorBoundary />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Header />
+      <main id="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/my-movies" element={<OwnerCatalog />} />
+          <Route path="/add-movie" element={<Create />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/details/:movieId" element={<Details />} />
+          <Route path="/edit/:movieId" element={<Edit />} />
+          <Route path="*" element={<ErrorBoundary />} />
+        </Routes>
+      </main>
+      <Footer />
     </AuthProvider>
   );
 }

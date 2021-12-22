@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 // import { getAllMovies } from "../../services/movieServices";
 // import { useState, useEffect } from "react";
 
@@ -11,7 +12,7 @@ const PopularCard = ({ movie }) => {
 
   return (
     <div className="card">
-      <Link to="details.html" className="card__cover">
+      <Link to={`/details/${movie._id}`} className="card__cover">
         <img src={movie.Poster} alt="" />
         <svg
           width="22"
@@ -48,7 +49,7 @@ const PopularCard = ({ movie }) => {
         8.3
       </span>
       <h3 className="card__title">
-        <Link to="details.html">{movie.Title}</Link>
+        <Link to="/catalog">{movie.Title}</Link>
       </h3>
       <ul className="card__list">
         <li>{movie.Genre}</li>

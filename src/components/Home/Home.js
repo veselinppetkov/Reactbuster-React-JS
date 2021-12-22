@@ -1,4 +1,4 @@
-import HomeCard from "./HomeCard";
+// import HomeCard from "./HomeCard";
 import { getAllMovies } from "../../services/movieServices";
 import { useState, useEffect } from "react";
 import Popular from "./Popular";
@@ -31,7 +31,7 @@ const Home = () => {
         ></button>
       </div> */}
       <Category />
-      <Popular />
+      <Popular movies={movies} />
     </>
   );
 };
