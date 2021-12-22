@@ -7,7 +7,6 @@ export const getAllMovies = async () => {
 export const getMovieById = async (id) => {
   const res = await fetch(`http://localhost:3030/data/movies/${id}`);
   const result = await res.json();
-
   return result;
 };
 
