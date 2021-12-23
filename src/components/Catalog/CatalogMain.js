@@ -11,8 +11,20 @@ const CatalogMain = () => {
     getAllMovies().then((data) => setMovies(data));
   }, []);
 
-  if (!movies) {
-    return;
+  if (movies.length === 0) {
+    return (
+      <div class="lds-grid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   }
 
   return (

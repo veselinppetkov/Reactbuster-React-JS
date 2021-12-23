@@ -16,11 +16,11 @@ const PrivacyPolicyMain = () => {
 
             <p className="section__text section__text--small">
               Many desktop publishing packages and{" "}
-              <Link to="/register">BACK TO SIGN UP </Link> editors now use Lorem
-              Ipsum as their default model text, and a search for 'lorem ipsum'
-              will uncover many web sites still in their infancy. Various
-              versions have evolved over the years, sometimes by accident,
-              sometimes on purpose (injected humour and the like).
+              <Link to="/register">sign up</Link> editors now use Lorem Ipsum as
+              their default model text, and a search for 'lorem ipsum' will
+              uncover many web sites still in their infancy. Various versions
+              have evolved over the years, sometimes by accident, sometimes on
+              purpose (injected humour and the like).
             </p>
 
             <p className="section__text section__text--small">
