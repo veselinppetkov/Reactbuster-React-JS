@@ -1,12 +1,16 @@
+const url = `http://localhost:3030`;
+
 export const getAllMovies = async () => {
-  const res = await fetch(`http://localhost:3030/data/movies`);
+  const res = await fetch(`${url}/data/movies`);
   const result = await res.json();
+
   return Object.values(result);
 };
 
 export const getMovieById = async (id) => {
-  const res = await fetch(`http://localhost:3030/data/movies/${id}`);
+  const res = await fetch(`${url}/data/movies/${id}`);
   const result = await res.json();
+
   return result;
 };
 
@@ -16,7 +20,7 @@ export const deleteMovieById = async (id, token) => {
   );
 
   if (confirmation) {
-    return await fetch(`http://localhost:3030/data/movies/${id}`, {
+    return await fetch(`${url}/data/movies/${id}`, {
       method: "delete",
       headers: {
         "X-Authorization": token,
@@ -26,7 +30,7 @@ export const deleteMovieById = async (id, token) => {
 };
 
 export const createMovie = (data, token) => {
-  fetch(`http://localhost:3030/data/movies`, {
+  fetch(`${url}/data/movies`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,8 +40,8 @@ export const createMovie = (data, token) => {
   });
 };
 
-export const editMovie = (id, data, token) => {
-  fetch(`http://localhost:3030/data/movies/${id}`, {
+export const editMovie = async (id, data, token) => {
+  await fetch(`${url}/data/movies/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -49,8 +53,9 @@ export const editMovie = (id, data, token) => {
 
 export const getUserMovies = async (userId) => {
   const res = await fetch(
-    `http://localhost:3030/data/movies?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`
+    `${url}/data/movies?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`
   );
   const result = await res.json();
+
   return Object.values(result);
 };

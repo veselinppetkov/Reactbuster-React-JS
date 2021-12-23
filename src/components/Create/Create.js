@@ -26,7 +26,7 @@ const Create = () => {
 
     createMovie(movieData, user.accessToken);
     console.log(`You have successfuly added a movie! Wohoo!`);
-    navigate(`/catalog`);
+    navigate(`/my-movies`);
   };
 
   return (

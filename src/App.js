@@ -14,6 +14,7 @@ import Edit from "./components/Edit";
 import OwnerCatalog from "./components/OwnerCatalog";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import MyProfile from "./components/MyProfile";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/add-movie" element={<Create />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/my-profile" element={<MyProfile />} />
             <Route path="/details/:movieId" element={<Details />} />
             <Route path="/edit/:movieId" element={<Edit />} />

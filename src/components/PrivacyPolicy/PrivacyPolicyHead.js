@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-
-const OwnerCatalogHead = () => {
+const PrivacyPolicyHead = () => {
   return (
-    <section className="section section--head">
+    <section className="section section--head section--head-fixed">
       <div className="container">
         <div className="row">
           <div className="col-12 col-xl-6">
             <h1 className="section__title section__title--head">
-              Your listed movies
+              Privacy policy
             </h1>
           </div>
 
@@ -17,7 +16,7 @@ const OwnerCatalogHead = () => {
                 <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb__item">
-                <Link to="/catalog">Catalog</Link>
+                <Link to="/register">Sign Up</Link>
               </li>
             </ul>
           </div>
@@ -26,5 +25,4 @@ const OwnerCatalogHead = () => {
     </section>
   );
 };
-
-export default OwnerCatalogHead;
+export default PrivacyPolicyHead;
