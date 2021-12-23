@@ -53,6 +53,7 @@ const Register = () => {
                     name="email"
                     className="sign__input"
                     placeholder="Email"
+                    pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z])(?=.*[a-z]).*$"
                   />
                 </div>
                 <div className="sign__group">
@@ -61,6 +62,8 @@ const Register = () => {
                     name="password"
                     className="sign__input"
                     placeholder="Password"
+                    pattern="(/(?=^.{5,}$)((?=.*\d)|(?=.*\W+))(?![.\n]).*$/"
+                    required
                   />
                 </div>
                 <div className="sign__group">
@@ -69,6 +72,8 @@ const Register = () => {
                     name="repass"
                     className="sign__input"
                     placeholder="Repeat your password"
+                    pattern="(/(?=^.{5,}$)((?=.*\d)|(?=.*\W+))(?![.\n]).*$/"
+                    required
                   />
                 </div>
                 <div className="sign__group sign__group--checkbox">

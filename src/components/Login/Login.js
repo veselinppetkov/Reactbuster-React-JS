@@ -53,6 +53,7 @@ const Login = () => {
                     name="email"
                     className="sign__input"
                     placeholder="Email"
+                    required
                   />
                 </div>
 
@@ -62,6 +63,7 @@ const Login = () => {
                     name="password"
                     className="sign__input"
                     placeholder="Password"
+                    required
                   />
                 </div>
 
