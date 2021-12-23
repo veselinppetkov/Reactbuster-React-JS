@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import PopularCard from "./PopularCard";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+
+import { Link } from "react-router-dom";
 import { getAllMovies } from "../../services/movieServices";
 import { useState, useEffect } from "react";
-import PopularCard from "./PopularCard";
 
 const Popular = () => {
   const [movies, setMovies] = useState([]);

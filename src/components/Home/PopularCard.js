@@ -1,15 +1,6 @@
 import { Link } from "react-router-dom";
 
-// import { getAllMovies } from "../../services/movieServices";
-// import { useState, useEffect } from "react";
-
 const PopularCard = ({ movie }) => {
-  // const [movies, setMovies] = useState([]);
-
-  // useEffect(() => {
-  //   getAllMovies().then((data) => setMovies(data));
-  // }, []);
-
   return (
     <div className="card">
       <Link to={`/details/${movie._id}`} className="card__cover">
