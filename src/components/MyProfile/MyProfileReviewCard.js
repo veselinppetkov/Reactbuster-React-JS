@@ -1,10 +1,5 @@
 import { Link } from "react-router-dom";
-import { getMovieById } from "../../services/movieServices";
-import { useState, useEffect } from "react";
-import MyProfileReviewedMovie from "./MyProfileReviewedMovie";
 const MyProfileReviewCard = ({ review }) => {
-  const [movies, setMovies] = useState([]);
-  getMovieById(review._movieId).then((data) => setMovies(data));
   return (
     <tr>
       <td>
@@ -12,7 +7,9 @@ const MyProfileReviewCard = ({ review }) => {
           <Link to="#">{review.title}</Link>
         </div>
       </td>
-      <MyProfileReviewedMovie />
+      <td>
+        <div class="main__table-text">Ooooooooooops</div>
+      </td>
       <td>
         <div class="main__table-text main__table-text--rate">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

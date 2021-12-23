@@ -150,9 +150,11 @@ const MyProfileHead = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {comments.map((c) => (
-                          <MyProfileReviewCard key={c._id} review={c} />
-                        ))}
+                        {comments.lenght > 1
+                          ? comments.map((c) => (
+                              <MyProfileReviewCard key={c._id} review={c} />
+                            ))
+                          : null}
                       </tbody>
                     </table>
                   </div>
