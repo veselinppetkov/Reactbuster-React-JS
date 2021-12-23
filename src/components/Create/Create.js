@@ -25,7 +25,6 @@ const Create = () => {
     };
 
     createMovie(movieData, user.accessToken);
-    console.log(`You have successfuly added a movie! Wohoo!`);
     navigate(`/my-movies`);
   };
 
@@ -54,6 +53,7 @@ const Create = () => {
                     name="Title"
                     className="sign__input"
                     placeholder="Title"
+                    required
                   />
                 </div>
 
@@ -63,6 +63,7 @@ const Create = () => {
                     name="Genre"
                     className="sign__input"
                     placeholder="Genre"
+                    required
                   />
                 </div>
 
@@ -72,6 +73,7 @@ const Create = () => {
                     name="Poster"
                     className="sign__input"
                     placeholder="Poster URL"
+                    required
                   />
                 </div>
 
@@ -83,6 +85,7 @@ const Create = () => {
                     placeholder="Release year"
                     min="1900"
                     max="2025"
+                    required
                   />
                 </div>
 
@@ -94,6 +97,7 @@ const Create = () => {
                     placeholder="Runtime"
                     min="0"
                     max="300"
+                    required
                   />
                 </div>
 
@@ -103,6 +107,7 @@ const Create = () => {
                     name="Country"
                     className="sign__input"
                     placeholder="Country"
+                    required
                   />
                 </div>
 
@@ -112,8 +117,10 @@ const Create = () => {
                     name="imdbRating"
                     className="sign__input"
                     placeholder="Rating"
+                    step="0.1"
                     min="1"
                     max="10"
+                    required
                   />
                 </div>
 
@@ -122,11 +129,10 @@ const Create = () => {
                     type="text"
                     name="Plot"
                     className="sign__textarea"
-                    wrap="hard"
                     placeholder="Movie description"
                     minLength="10"
                     maxLength="300"
-                    required="required"
+                    required
                   />
                 </div>
 
