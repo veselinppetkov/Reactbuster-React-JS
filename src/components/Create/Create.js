@@ -9,16 +9,16 @@ const Create = () => {
 
   const createHandler = (e) => {
     e.preventDefault();
+
     let { Title, Genre, Poster, Year, Runtime, Country, imdbRating, Plot } =
       Object.fromEntries(new FormData(e.currentTarget));
-    Runtime += `min.`;
 
     const movieData = {
       Title,
       Genre,
       Poster,
       Year,
-      Runtime,
+      Runtime: (Runtime += `min.`),
       Country,
       imdbRating,
       Plot,

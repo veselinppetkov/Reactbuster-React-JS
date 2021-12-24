@@ -40,10 +40,15 @@ const Details = () => {
       content,
       _movieId: movieId,
       _ownerId: user._id,
+      _ownerEmail: user.email,
     };
 
     postReview(reviewData, user.accessToken);
-    window.location.reload(false);
+    console.log(user.accessToken);
+    getAllReviews().then((data) => {
+      const reviews = data.filter((r) => r._movieId === movieId);
+      setReviews(reviews);
+    });
     form.reset();
   };
 
@@ -105,7 +110,7 @@ const Details = () => {
                             What a movie, guys!
                           </span>
                           <span className="reviews__time">
-                            Fri, 19 Mar 2021 13:57:33 GMT by Userov
+                            Fri, 19 Mar 2021 13:57:33 GMT by user@userov.bg
                           </span>
                           <span className="reviews__rating">
                             <svg

@@ -1,17 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { getMovieById, editMovie } from "../../services/movieServices";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import { useAuthContext } from "../../contexts/AuthContext";
 
+import { getMovieById, editMovie } from "../../services/movieServices";
+
 const Edit = () => {
+  const navigate = useNavigate();
+
   const { user } = useAuthContext();
   const { movieId } = useParams();
-  const navigate = useNavigate();
+
   const [movie, setMovie] = useState({});
-  console.log(movieId);
-  console.log(useParams());
 
   useEffect(() => {
     getMovieById(movieId).then((authData) => setMovie(authData));
@@ -19,7 +19,8 @@ const Edit = () => {
 
   const editHandler = (e) => {
     e.preventDefault();
-    const { Title, Genre, Poster, Year, Runtime, Country, imdbRating, Plot } =
+
+    let { Title, Genre, Poster, Year, Runtime, Country, imdbRating, Plot } =
       Object.fromEntries(new FormData(e.currentTarget));
 
     const movieData = {
@@ -27,21 +28,21 @@ const Edit = () => {
       Genre,
       Poster,
       Year,
-      Runtime,
+      Runtime: (Runtime += `min.`),
       Country,
       imdbRating,
       Plot,
     };
 
     editMovie(movieId, movieData, user.accessToken);
-    navigate(`/catalog`);
+    navigate(`/my-movies`);
   };
 
   return (
     <div
       className="sign section--full-bg"
       style={{
-        backgroundImage: "url(https://wallpaperaccess.com/full/752715.jpg)",
+        backgroundImage: "url(https://bit.ly/3Epimlm)",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -62,6 +63,7 @@ const Edit = () => {
                     name="Title"
                     className="sign__input"
                     placeholder="Title"
+                    required
                     defaultValue={movie.Title}
                   />
                 </div>
@@ -72,6 +74,7 @@ const Edit = () => {
                     name="Genre"
                     className="sign__input"
                     placeholder="Genre"
+                    required
                     defaultValue={movie.Genre}
                   />
                 </div>
@@ -82,6 +85,7 @@ const Edit = () => {
                     name="Poster"
                     className="sign__input"
                     placeholder="Poster URL"
+                    required
                     defaultValue={movie.Poster}
                   />
                 </div>
@@ -94,16 +98,20 @@ const Edit = () => {
                     placeholder="Release year"
                     min="1900"
                     max="2025"
+                    required
                     defaultValue={movie.Year}
                   />
                 </div>
 
                 <div className="sign__group">
                   <input
-                    type="text"
+                    type="number"
                     name="Runtime"
                     className="sign__input"
                     placeholder="Runtime"
+                    min="0"
+                    max="300"
+                    required
                     defaultValue={movie.Runtime}
                   />
                 </div>
@@ -114,6 +122,7 @@ const Edit = () => {
                     name="Country"
                     className="sign__input"
                     placeholder="Country"
+                    required
                     defaultValue={movie.Country}
                   />
                 </div>
@@ -124,8 +133,10 @@ const Edit = () => {
                     name="imdbRating"
                     className="sign__input"
                     placeholder="Rating"
+                    step="0.1"
                     min="1"
                     max="10"
+                    required
                     defaultValue={movie.imdbRating}
                   />
                 </div>
@@ -135,11 +146,10 @@ const Edit = () => {
                     type="text"
                     name="Plot"
                     className="sign__textarea"
-                    wrap="hard"
                     placeholder="Movie description"
                     minLength="10"
                     maxLength="300"
-                    required="required"
+                    required
                     defaultValue={movie.Plot}
                   />
                 </div>

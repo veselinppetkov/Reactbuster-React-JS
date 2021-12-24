@@ -2755,6 +2755,7 @@
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
         _id: "70071043-198b-41c2-b442-f7cea6aa81e15",
         _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+        _ownerEmail: "peter@abv.bg",
         _movieId: "af3b5997-f7ad-4768-825b-c30a09086fc9",
         _createdOn: 1616162253496,
         rating: 10,

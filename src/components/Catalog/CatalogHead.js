@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 const CatalogHead = () => {
   return (
     <section className="section section--head">
@@ -18,9 +19,6 @@ const CatalogHead = () => {
               <li className="breadcrumb__item">
                 <Link to="/catalog">Catalog</Link>
               </li>
-              {/* <li className="breadcrumb__item breadcrumb__item--active">
-                Catalog
-              </li> */}
             </ul>
           </div>
         </div>

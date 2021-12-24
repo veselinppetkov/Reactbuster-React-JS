@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import { deleteMovieById } from "../../services/movieServices";
+
 import { useAuthContext } from "../../contexts/AuthContext";
 
 const DetailsCard = ({ movie }) => {
