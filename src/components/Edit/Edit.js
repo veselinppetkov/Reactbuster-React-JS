@@ -7,8 +7,8 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 const Edit = () => {
   const { user } = useAuthContext();
-  const navigate = useNavigate();
   const { movieId } = useParams();
+  const navigate = useNavigate();
   const [movie, setMovie] = useState({});
   console.log(movieId);
   console.log(useParams());
