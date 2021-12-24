@@ -1,11 +1,11 @@
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, userEmail }) => {
   return (
     <li className="reviews__item">
       <div className="reviews__autor">
-        <img className="reviews__avatar" src="img/avatar.svg" alt="" />
+        <img className="reviews__avatar" src="https://bit.ly/3EqA0oL" alt="" />
         <span className="reviews__name">{review.title}</span>
         <span className="reviews__time">
-          {new Date(review._createdOn).toGMTString()} by Userov
+          {new Date(review._createdOn).toGMTString()} by {userEmail}
         </span>
         <span className="reviews__rating">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

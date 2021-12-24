@@ -1,24 +1,24 @@
 import { Link, useNavigate } from "react-router-dom";
-import { registerRequest, loginRequest } from "../../services/authServices";
+
+import { registerRequest } from "../../services/authServices";
 
 const Register = () => {
   const navigate = useNavigate();
 
   const registerHandler = (e) => {
     e.preventDefault();
+
     const { email, password, repass } = Object.fromEntries(
       new FormData(e.currentTarget)
     );
 
     if (password !== repass) {
-      alert(`Passwords don't match`);
+      alert(`Passwords don't match!`);
       return;
     }
 
-    registerRequest(email, password).then(({ email, password }) => {
-      loginRequest(email, password);
-      navigate(`/catalog`);
-    });
+    registerRequest(email, password);
+    navigate(`/login`);
   };
 
   const privacyHandler = (e) => {

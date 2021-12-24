@@ -1,14 +1,14 @@
 const url = `http://localhost:3030`;
 
-export const getAllComments = async () => {
-  const res = await fetch(`${url}/data/comments`);
+export const getAllReviews = async () => {
+  const res = await fetch(`${url}/data/reviews`);
   const result = await res.json();
 
   return Object.values(result);
 };
 
-export const postComment = (data, token) => {
-  fetch(`${url}/data/comments`, {
+export const postReview = (data, token) => {
+  fetch(`${url}/data/reviews`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

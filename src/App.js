@@ -1,5 +1,6 @@
-import { AuthProvider } from "./contexts/AuthContext";
 import { Routes, Route } from "react-router-dom";
+
+import { AuthProvider } from "./contexts/AuthContext";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";

@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { getUserMovies } from "../../services/movieServices";
 import { useState, useEffect } from "react";
-import { getAllComments } from "../../services/commentsServices";
+import { getAllReviews } from "../../services/reviewServices";
 import MyProfileMovieCard from "./MyProfileMovieCard";
 import MyProfileReviewCard from "./MyProfileReviewCard";
 
 const MyProfileHead = () => {
   const { user, logout } = useAuthContext();
-  const [comments, setComments] = useState({});
+  const [reviews, setReviews] = useState({});
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -16,10 +16,10 @@ const MyProfileHead = () => {
   }, []);
 
   useEffect(() => {
-    getAllComments().then((data) => {
-      const comments = data.filter((c) => c._ownerId === user._id);
-      console.log(comments);
-      setComments(comments);
+    getAllReviews().then((data) => {
+      const reviews = data.filter((r) => r._ownerId === user._id);
+      console.log(reviews);
+      setReviews(reviews);
     });
   }, []);
 
@@ -150,8 +150,8 @@ const MyProfileHead = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {comments.lenght > 1
-                          ? comments.map((c) => (
+                        {reviews.lenght > 1
+                          ? reviews.map((c) => (
                               <MyProfileReviewCard key={c._id} review={c} />
                             ))
                           : null}

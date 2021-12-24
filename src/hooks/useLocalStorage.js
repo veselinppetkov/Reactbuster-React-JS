@@ -7,19 +7,17 @@ const useLocalStorage = (key, initialValue) => {
 
       return item ? JSON.parse(item) : initialValue;
     } catch (err) {
-      console.log(err);
+      alert(err.message);
       return initialValue;
     }
   });
 
   const setItem = (value) => {
-    // TODO: add support for functions
     try {
       localStorage.setItem(key, JSON.stringify(value));
-
       setState(value);
     } catch (err) {
-      console.log(err);
+      alert(err.message);
     }
   };
 

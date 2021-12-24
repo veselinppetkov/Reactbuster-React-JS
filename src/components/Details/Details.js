@@ -1,18 +1,19 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import { getMovieById } from "../../services/movieServices";
-import { getAllComments, postComment } from "../../services/commentsServices";
+import { getAllReviews, postReview } from "../../services/reviewServices";
 import { useAuthContext } from "../../contexts/AuthContext";
+
 import DetailsCard from "./DetailsCard";
 import ReviewItem from "./ReviewItem";
-import { useNavigate } from "react-router-dom";
 
 const Details = () => {
   const { user, isAuthenticated } = useAuthContext();
-  const navigate = useNavigate();
-  const [movie, setMovie] = useState({});
-  const [comments, setComments] = useState({});
   const { movieId } = useParams();
+
+  const [movie, setMovie] = useState({});
+  const [reviews, setReviews] = useState({});
 
   useEffect(() => {
     getMovieById(movieId).then((data) => {
@@ -21,27 +22,29 @@ const Details = () => {
   }, [movieId]);
 
   useEffect(() => {
-    getAllComments().then((data) => {
-      const comments = data.filter((c) => c._movieId === movieId);
-      console.log(comments);
-      setComments(comments);
+    getAllReviews().then((data) => {
+      const reviews = data.filter((r) => r._movieId === movieId);
+      setReviews(reviews);
     });
   }, []);
 
   const reviewHandler = (e) => {
     e.preventDefault();
-    const { title, rating, content } = Object.fromEntries(
-      new FormData(e.currentTarget)
-    );
-    const commentData = {
+    const form = e.currentTarget;
+
+    const { title, rating, content } = Object.fromEntries(new FormData(form));
+
+    const reviewData = {
       title,
       rating,
       content,
       _movieId: movieId,
       _ownerId: user._id,
     };
-    postComment(commentData, user.accessToken);
-    e.currentTarget.reset();
+
+    postReview(reviewData, user.accessToken);
+    window.location.reload(false);
+    form.reset();
   };
 
   return (
@@ -79,7 +82,7 @@ const Details = () => {
                       aria-selected="false"
                     >
                       <h4>Reviews</h4>
-                      <span>{comments.length + 1}</span>
+                      <span>{reviews ? reviews.length + 1 : 1}</span>
                     </Link>
                   </li>
                 </ul>
@@ -91,15 +94,15 @@ const Details = () => {
                     role="tabpanel"
                   >
                     <ul className="reviews__list">
-                      <li className="reviews__item">
+                      <li className="reviews__item" id="hardCoded-review">
                         <div className="reviews__autor">
                           <img
                             className="reviews__avatar"
-                            src="img/avatar.svg"
+                            src="https://bit.ly/3EqA0oL"
                             alt=""
                           />
                           <span className="reviews__name">
-                            Best Marvel movie in my opinion
+                            What a movie, guys!
                           </span>
                           <span className="reviews__time">
                             Fri, 19 Mar 2021 13:57:33 GMT by Userov
@@ -124,9 +127,13 @@ const Details = () => {
                           middle of text.
                         </p>
                       </li>
-                      {comments.length > 1
-                        ? comments.map((c) => (
-                            <ReviewItem key={c._id} review={c} />
+                      {reviews && reviews.length > 0
+                        ? reviews.map((r) => (
+                            <ReviewItem
+                              key={r._id}
+                              review={r}
+                              userEmail={user.email}
+                            />
                           ))
                         : null}
                     </ul>

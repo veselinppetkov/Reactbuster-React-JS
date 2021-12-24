@@ -2748,7 +2748,7 @@
         _id: "33d64c49-6f63-4215-9345-f2dadd237633",
       },
     },
-    comments: {
+    reviews: {
       "0a272c58-b7ea-4e09-a000-7ec988248f66": {
         title: "Best movie in my opinion",
         content:

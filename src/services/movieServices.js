@@ -29,8 +29,8 @@ export const deleteMovieById = async (id, token) => {
   }
 };
 
-export const createMovie = (data, token) => {
-  fetch(`${url}/data/movies`, {
+export const createMovie = async (data, token) => {
+  return await fetch(`${url}/data/movies`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export const createMovie = (data, token) => {
 };
 
 export const editMovie = async (id, data, token) => {
-  await fetch(`${url}/data/movies/${id}`, {
+  return await fetch(`${url}/data/movies/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
