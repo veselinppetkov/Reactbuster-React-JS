@@ -2846,7 +2846,7 @@ body::-webkit-scrollbar-thumb {
   border-bottom: none;
   padding-bottom: 0;
 }
-.plans__btn {
+.plans__btn  {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -2866,6 +2866,46 @@ body::-webkit-scrollbar-thumb {
   color: #151f30;
   background-color: #fff;
 }
+.review-edit__btn {
+  display: inline-block;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  width: 7%;
+  min-width: 160px;
+  height: 50px;
+  border-radius: 16px;
+  background-color: #1F2E43;
+  font-size: 14px;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.review-edit__btn:hover {
+  color: #151f30;
+  background-color: #fff;
+}
+.review-delete__btn {
+  display: inline-block;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  width: 7%;
+  min-width: 160px;
+  height: 50px;
+  border-radius: 16px;
+  background-color: darkred;
+  font-size: 14px;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.review-delete__btn:hover {
+  color: #151f30;
+  background-color: #fff;
+}
 @media (min-width: 768px) {
   .plans {
     margin-top: 30px;
@@ -2877,6 +2917,14 @@ body::-webkit-scrollbar-thumb {
   .plans__btn {
     height: 60px;
     min-width: 180px;
+  }
+  .review-edit__btn{
+    height: 25px;
+    min-width: 50px;
+  }
+  .review-delete__btn{
+    height: 25px;
+    min-width: 60px;
   }
   .plans__table tbody tr:last-child td {
     padding: 20px 10px 0 20px;

@@ -43,13 +43,10 @@ const Details = () => {
       _ownerEmail: user.email,
     };
 
-    postReview(reviewData, user.accessToken);
-    console.log(user.accessToken);
-    getAllReviews().then((data) => {
-      const reviews = data.filter((r) => r._movieId === movieId);
-      setReviews(reviews);
+    postReview(reviewData, user.accessToken).then((data) => {
+      setReviews([...reviews, data]);
+      form.reset();
     });
-    form.reset();
   };
 
   return (
@@ -137,7 +134,8 @@ const Details = () => {
                             <ReviewItem
                               key={r._id}
                               review={r}
-                              userEmail={user.email}
+                              isAuthenticated={isAuthenticated}
+                              token={user.accessToken}
                             />
                           ))
                         : null}

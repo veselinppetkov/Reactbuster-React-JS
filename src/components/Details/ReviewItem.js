@@ -1,9 +1,24 @@
-const ReviewItem = ({ review }) => {
+import { deleteReviewById } from "../../services/reviewServices";
+
+const ReviewItem = ({ review, isAuthenticated, token }) => {
   return (
     <li className="reviews__item">
       <div className="reviews__autor">
         <img className="reviews__avatar" src="https://bit.ly/3EqA0oL" alt="" />
-        <span className="reviews__name">{review.title}</span>
+        <span className="reviews__name">
+          {review.title}
+          {isAuthenticated && isAuthenticated === review._ownerEmail ? (
+            <>
+              <button className="review-edit__btn">Edit</button>
+              <button
+                onClick={() => deleteReviewById(review._id, token)}
+                className="review-delete__btn"
+              >
+                Delete
+              </button>
+            </>
+          ) : null}
+        </span>
         <span className="reviews__time">
           {new Date(review._createdOn).toGMTString()} by {review._ownerEmail}
         </span>
