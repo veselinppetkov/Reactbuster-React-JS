@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { AuthProvider } from "./contexts/AuthContext";
 
+import ArtificialGuard from "./components/Common/ArtificialGuard";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -24,15 +25,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
-          <Route path="/my-movies" element={<OwnerCatalog />} />
-          <Route path="/add-movie" element={<Create />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/my-profile" element={<MyProfile />} />
-          <Route path="/details/:movieId" element={<Details />} />
-          <Route path="/edit/:movieId" element={<Edit />} />
           <Route path="*" element={<Error />} />
+          <Route element={<ArtificialGuard />}>
+            <Route path="/edit/:movieId" element={<Edit />} />
+            <Route path="/my-movies" element={<OwnerCatalog />} />
+            <Route path="/add-movie" element={<Create />} />
+            <Route path="/my-profile" element={<MyProfile />} />
+            <Route path="/details/:movieId" element={<Details />} />
+          </Route>
         </Routes>
       </main>
       <Footer />

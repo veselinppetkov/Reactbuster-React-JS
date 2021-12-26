@@ -39,7 +39,6 @@ const Popular = () => {
                   <OwlCarousel
                     className="section__carousel owl-carousel"
                     items={6}
-                    className="owl-theme"
                     loop
                     autoplay
                     autoplayHoverPause

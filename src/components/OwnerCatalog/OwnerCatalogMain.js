@@ -13,7 +13,7 @@ const OwnerCatalogMain = () => {
 
   useEffect(() => {
     getUserMovies(user._id).then((data) => setMovies(data));
-  }, []);
+  }, [user._id]);
 
   return (
     <>

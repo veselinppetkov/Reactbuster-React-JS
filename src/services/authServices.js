@@ -25,7 +25,14 @@ export const logoutRequest = async (token) => {
       "X-Authorization": token,
     },
   });
-  return res;
+
+  const result = await res.json();
+
+  if (res.ok !== true) {
+    throw new Error(result.message);
+  } else {
+    return result;
+  }
 };
 
 export const registerRequest = async (email, password, username) => {
@@ -38,5 +45,10 @@ export const registerRequest = async (email, password, username) => {
   });
 
   const result = await res.json();
-  return result;
+
+  if (res.ok !== true) {
+    throw new Error(result.message);
+  } else {
+    return result;
+  }
 };

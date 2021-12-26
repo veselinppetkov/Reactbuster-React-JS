@@ -7,6 +7,15 @@ export const getAllMovies = async () => {
   return Object.values(result);
 };
 
+export const getUserMovies = async (userId) => {
+  const res = await fetch(
+    `${url}/data/movies?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`
+  );
+  const result = await res.json();
+
+  return Object.values(result);
+};
+
 export const getMovieById = async (id) => {
   const res = await fetch(`${url}/data/movies/${id}`);
   const result = await res.json();
@@ -49,13 +58,4 @@ export const editMovie = async (id, data, token) => {
     },
     body: JSON.stringify(data),
   });
-};
-
-export const getUserMovies = async (userId) => {
-  const res = await fetch(
-    `${url}/data/movies?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`
-  );
-  const result = await res.json();
-
-  return Object.values(result);
 };

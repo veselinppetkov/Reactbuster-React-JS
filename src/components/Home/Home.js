@@ -1,5 +1,5 @@
 import Popular from "./Popular";
-import Category from "../Category";
+import Category from "./Category";
 
 const Home = () => {
   return (

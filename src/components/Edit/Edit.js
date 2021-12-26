@@ -15,7 +15,7 @@ const Edit = () => {
 
   useEffect(() => {
     getMovieById(movieId).then((authData) => setMovie(authData));
-  }, []);
+  }, [movieId]);
 
   const editHandler = (e) => {
     e.preventDefault();

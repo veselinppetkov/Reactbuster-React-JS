@@ -26,7 +26,7 @@ const Details = () => {
       const reviews = data.filter((r) => r._movieId === movieId);
       setReviews(reviews);
     });
-  }, []);
+  }, [movieId]);
 
   const reviewHandler = (e) => {
     e.preventDefault();
