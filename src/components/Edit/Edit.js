@@ -96,7 +96,7 @@ const Edit = () => {
                     name="Year"
                     className="sign__input"
                     placeholder="Release year"
-                    min="1900"
+                    min="0"
                     max="2025"
                     required
                     defaultValue={movie.Year}
@@ -110,7 +110,7 @@ const Edit = () => {
                     className="sign__input"
                     placeholder="Runtime"
                     min="0"
-                    max="300"
+                    max="360"
                     required
                     defaultValue={movie.Runtime}
                   />

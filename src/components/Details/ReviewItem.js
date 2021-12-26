@@ -1,13 +1,11 @@
-import { deleteReviewById } from "../../services/reviewServices";
-
-const ReviewItem = ({ review, isAuthenticated, token }) => {
+const ReviewItem = ({ review }) => {
   return (
     <li className="reviews__item">
       <div className="reviews__autor">
         <img className="reviews__avatar" src="https://bit.ly/3EqA0oL" alt="" />
         <span className="reviews__name">
           {review.title}
-          {isAuthenticated && isAuthenticated === review._ownerEmail ? (
+          {/* {isAuthenticated && isAuthenticated === review._ownerEmail ? (
             <>
               <button className="review-edit__btn">Edit</button>
               <button
@@ -17,7 +15,7 @@ const ReviewItem = ({ review, isAuthenticated, token }) => {
                 Delete
               </button>
             </>
-          ) : null}
+          ) : null} */}
         </span>
         <span className="reviews__time">
           {new Date(review._createdOn).toGMTString()} by {review._ownerEmail}

@@ -134,8 +134,8 @@ const Details = () => {
                             <ReviewItem
                               key={r._id}
                               review={r}
-                              isAuthenticated={isAuthenticated}
-                              token={user.accessToken}
+                              // isAuthenticated={isAuthenticated}
+                              // token={user.accessToken}
                             />
                           ))
                         : null}

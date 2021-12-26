@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { createMovie } from "../../services/movieServices";
+import { Link, useNavigate } from "react-router-dom";
+
 import { useAuthContext } from "../../contexts/AuthContext";
+
+import { createMovie } from "../../services/movieServices";
 
 const Create = () => {
   const { user } = useAuthContext();
@@ -83,7 +84,7 @@ const Create = () => {
                     name="Year"
                     className="sign__input"
                     placeholder="Release year"
-                    min="1900"
+                    min="0"
                     max="2025"
                     required
                   />
@@ -96,7 +97,7 @@ const Create = () => {
                     className="sign__input"
                     placeholder="Runtime"
                     min="0"
-                    max="300"
+                    max="360"
                     required
                   />
                 </div>

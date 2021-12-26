@@ -1,8 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { getAllMovies } from "../../services/movieServices";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 const Header = () => {
+  const navigate = useNavigate();
   const { logout, isAuthenticated } = useAuthContext();
+
+  const searchHandler = (e) => {
+    e.preventDefault();
+    const { Title } = Object.fromEntries(new FormData(e.currentTarget));
+
+    getAllMovies().then((data) => {
+      const [match] = data.filter((m) => m.Title === Title);
+      match
+        ? navigate(`/details/${match._id}`)
+        : alert(`Sorry this movie is not available in our database!`);
+    });
+
+    e.target.reset();
+  };
 
   return (
     <header className="header header--static">
@@ -14,17 +31,15 @@ const Header = () => {
                 <img
                   src="img/logo.png"
                   height="200"
-                  alt="Reactbuster - Movies & TV Shows Online"
+                  alt="Reactbuster - Movie & TV Show Reviews"
                 />
               </Link>
-
               <ul className="header__nav">
                 <li className="header__nav-item" id="home">
                   <Link className="header__nav-link" to="/">
                     Home{" "}
                   </Link>
                 </li>
-
                 <li className="header__nav-item" id="all-movies">
                   <Link
                     className="header__nav-link"
@@ -119,13 +134,14 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <form action="#" className="header__form">
+                    <form onSubmit={searchHandler} className="header__form">
                       <input
                         className="header__form-input"
                         type="text"
+                        name="Title"
                         placeholder="I'm looking for..."
                       />
-                      <button className="header__form-btn" type="button">
+                      <button className="header__form-btn" type="submit">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
