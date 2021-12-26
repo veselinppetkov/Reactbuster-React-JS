@@ -1,10 +1,12 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import { getUserMovies } from "../../services/movieServices";
+import { useAuthContext } from "../../contexts/AuthContext";
+
 import OwnerCatalogItem from "./OwnerCatalogItem";
 import OwnerCatalogLoadMore from "./OwnerCatalogLoadMore";
 import OwnerCatalogNav from "./OwnerCatalogNav";
-import { getUserMovies } from "../../services/movieServices";
-import { useAuthContext } from "../../contexts/AuthContext";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import OwnerCatalogHead from "./OwnerCatalogHead";
 
 const OwnerCatalogMain = () => {
@@ -12,7 +14,9 @@ const OwnerCatalogMain = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    getUserMovies(user._id).then((data) => setMovies(data));
+    getUserMovies(user._id)
+      .then((data) => setMovies(data))
+      .catch((err) => alert(err.message));
   }, [user._id]);
 
   return (

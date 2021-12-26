@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import MyProfileHead from "./MyProfileHead";
 import MyProfileMain from "./MyProfileMain";
 

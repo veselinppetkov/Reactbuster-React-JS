@@ -10,7 +10,9 @@ const CatalogMain = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    getAllMovies().then((data) => setMovies(data));
+    getAllMovies()
+      .then((data) => setMovies(data))
+      .catch((err) => alert(err.message));
   }, []);
 
   return (

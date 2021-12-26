@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import { getAllMovies } from "../../services/movieServices";
+
 import { useAuthContext } from "../../contexts/AuthContext";
 
 const Header = () => {
@@ -11,12 +12,14 @@ const Header = () => {
     e.preventDefault();
     const { Title } = Object.fromEntries(new FormData(e.currentTarget));
 
-    getAllMovies().then((data) => {
-      const [match] = data.filter((m) => m.Title === Title);
-      match
-        ? navigate(`/details/${match._id}`)
-        : alert(`Sorry this movie is not available in our database!`);
-    });
+    getAllMovies()
+      .then((data) => {
+        const [match] = data.filter((m) => m.Title === Title);
+        match
+          ? navigate(`/details/${match._id}`)
+          : alert(`Sorry this movie is not available in our database!`);
+      })
+      .catch((err) => alert(err.message));
 
     e.target.reset();
   };

@@ -5,16 +5,17 @@ const MyProfileHead = () => {
       <div className="container">
         <div className="row">
           <div className="col-12 col-xl-6">
-            <h1 className="section__title section__title--head">Profile</h1>
+            <h1 className="section__title section__title--head">
+              Your profile
+            </h1>
           </div>
-
           <div className="col-12 col-xl-6">
             <ul className="breadcrumb">
               <li className="breadcrumb__item">
                 <Link to="/">Home</Link>
               </li>
-              <li className="breadcrumb__item breadcrumb__item--active">
-                Profile
+              <li className="breadcrumb__item">
+                <Link to="/my-profile">Profile</Link>
               </li>
             </ul>
           </div>

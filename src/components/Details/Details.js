@@ -16,16 +16,20 @@ const Details = () => {
   const [reviews, setReviews] = useState({});
 
   useEffect(() => {
-    getMovieById(movieId).then((data) => {
-      setMovie(data);
-    });
+    getMovieById(movieId)
+      .then((data) => {
+        setMovie(data);
+      })
+      .catch((err) => alert(err.message));
   }, [movieId]);
 
   useEffect(() => {
-    getAllReviews().then((data) => {
-      const reviews = data.filter((r) => r._movieId === movieId);
-      setReviews(reviews);
-    });
+    getAllReviews()
+      .then((data) => {
+        const reviews = data.filter((r) => r._movieId === movieId);
+        setReviews(reviews);
+      })
+      .catch((err) => alert(err.message));
   }, [movieId]);
 
   const reviewHandler = (e) => {
@@ -39,6 +43,7 @@ const Details = () => {
       rating,
       content,
       _movieId: movieId,
+      _movieTitle: movie.Title,
       _ownerId: user._id,
       _ownerEmail: user.email,
     };

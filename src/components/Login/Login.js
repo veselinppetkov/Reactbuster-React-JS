@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import { useAuthContext } from "../../contexts/AuthContext";
-
 import { loginRequest } from "../../services/authServices";
 
 const Login = () => {
@@ -19,16 +18,6 @@ const Login = () => {
         navigate(`/catalog`);
       })
       .catch((err) => alert(err.message));
-  };
-
-  const rememberMeHandler = (e) => {
-    const isChecked = e.target.checked;
-
-    if (isChecked) {
-      console.log(`It is checked!`);
-    } else {
-      console.log(`It is not checked!`);
-    }
   };
 
   return (
@@ -75,8 +64,7 @@ const Login = () => {
                     id="remember"
                     name="remember"
                     type="checkbox"
-                    onChange={rememberMeHandler}
-                    // checked="checked"
+                    checked="checked"
                   />
                   <label htmlFor="remember">Remember Me</label>
                 </div>

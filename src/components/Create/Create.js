@@ -25,7 +25,7 @@ const Create = () => {
       Plot,
     };
 
-    createMovie(movieData, user.accessToken);
+    createMovie(movieData, user.accessToken).catch((err) => alert(err.message));
     navigate(`/my-movies`);
   };
 

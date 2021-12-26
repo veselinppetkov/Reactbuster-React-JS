@@ -4,11 +4,13 @@ const MyProfileReviewCard = ({ review }) => {
     <tr>
       <td>
         <div class="main__table-text">
-          <Link to="#">{review.title}</Link>
+          <div>{review.title}</div>
         </div>
       </td>
       <td>
-        <div class="main__table-text">Ooooooooooops</div>
+        <Link to={`/details/${review._movieId}`} class="main__table-text">
+          {review._movieTitle}
+        </Link>
       </td>
       <td>
         <div class="main__table-text main__table-text--rate">

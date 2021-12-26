@@ -34,7 +34,9 @@ const Edit = () => {
       Plot,
     };
 
-    editMovie(movieId, movieData, user.accessToken);
+    editMovie(movieId, movieData, user.accessToken).catch((err) =>
+      alert(err.message)
+    );
     navigate(`/my-movies`);
   };
 

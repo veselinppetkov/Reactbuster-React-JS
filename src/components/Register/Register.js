@@ -17,16 +17,8 @@ const Register = () => {
       return;
     }
 
-    registerRequest(email, password);
+    registerRequest(email, password).catch((err) => alert(err.message));
     navigate(`/login`);
-  };
-
-  const privacyHandler = (e) => {
-    let isChecked = e.target.checked;
-
-    if (!isChecked) {
-      alert(`You must read and agree to our Privacy Policy first!`);
-    }
   };
 
   return (
@@ -82,7 +74,6 @@ const Register = () => {
                     name="remember"
                     type="checkbox"
                     checked
-                    onChange={privacyHandler}
                   />
                   <label htmlFor="remember">
                     I agree to the <Link to="/privacy">Privacy Policy</Link>
