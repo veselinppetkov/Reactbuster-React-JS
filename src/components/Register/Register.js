@@ -54,7 +54,7 @@ const Register = () => {
                     name="password"
                     className="sign__input"
                     placeholder="Password"
-                    pattern="(/(?=^.{5,}$)((?=.*\d)|(?=.*\W+))(?![.\n]).*$/"
+                    pattern="(?=^.{5,}$)((?=.*\d)|(?=.*\W+))(?![.\n]).*$"
                     required
                   />
                 </div>
@@ -64,7 +64,7 @@ const Register = () => {
                     name="repass"
                     className="sign__input"
                     placeholder="Repeat your password"
-                    pattern="(/(?=^.{5,}$)((?=.*\d)|(?=.*\W+))(?![.\n]).*$/"
+                    pattern="(?=^.{5,}$)((?=.*\d)|(?=.*\W+))(?![.\n]).*$"
                     required
                   />
                 </div>
@@ -73,7 +73,7 @@ const Register = () => {
                     id="remember"
                     name="remember"
                     type="checkbox"
-                    checked
+                    readOnly
                   />
                   <label htmlFor="remember">
                     I agree to the <Link to="/privacy">Privacy Policy</Link>

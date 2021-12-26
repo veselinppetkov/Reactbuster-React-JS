@@ -64,7 +64,7 @@ const Login = () => {
                     id="remember"
                     name="remember"
                     type="checkbox"
-                    checked="checked"
+                    readOnly
                   />
                   <label htmlFor="remember">Remember Me</label>
                 </div>
